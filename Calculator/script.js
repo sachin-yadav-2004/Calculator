@@ -1,0 +1,27 @@
+let input=document.getElementById("input");
+let buttons=document.querySelectorAll(".cal-button");
+let string="";
+
+let arr=Array.from(buttons);
+
+arr.forEach(button=>{
+    button.addEventListener("click",(e)=>{
+        if(e.target.innerHTML=="="){
+            input.value = Function("return " + string)();
+        }
+        else if(e.target.innerHTML=="AC"){
+            string="";
+            input.value=string;
+        }
+        else if(e.target.innerHTML=="DEL"){
+            string=string.slice(0,-1);
+            input.value=string;
+        }
+        else{
+            string+=e.target.innerHTML;
+            input.value=string;
+        }
+    })
+})
+
+
